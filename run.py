@@ -16,21 +16,21 @@ SHEET = GSPREAD_CLIENT.open("hr_space")
 
 def task():
     """
-    Request user to choose from two different tasks.
-    1st task is to register a new employee
-    2nd task is record an employees sick absence
+    Request user to choose from two different tasks, by entering 1 or 2.
+    1 is to register a new employee. 2 is to record an employees sick absence.
+    The loop will repeatedly ask the user to select 1 or 2.
     """
-    print("To record new staff details, please select '1'")
-    print("For staff attendance records, please select '2' \n")
-
-    choice = int(input("Please make your selection: \n"))
-    if choice == 1:
-        print("Place holder to run: new_staff function")
-    elif choice == 2:
-        print("Place holder to run: attendance_records function")
-    else:
-        print("To record new staff details, please select '1' and press 'ENTER")
+    while True:
+        print("To record new staff details, please select '1' and press 'ENTER'")
         print("For staff attendance records, please select '2' and press 'ENTER' \n")
+
+        choice = int(input("Please make your selection: \n"))
+        if choice == 1:
+            print("Place holder to run: new_staff function")
+            break
+        elif choice == 2:
+            print("Place holder to run: attendance_records function")
+            return False
 
 
 task()
