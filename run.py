@@ -15,18 +15,20 @@ SHEET = GSPREAD_CLIENT.open("hr_space")
 def welcome():
     """
     Request user to input their name, without spaces or special characters.
-    Change username to capitalize fir letter.
+    Change username, firt letter to capital. With loop, until input is valid.
     """
     print("Please enter a user name which only consists of letters.")
     print("Spaces and special characters are not allowed...\n")
+    while True:
+        username = input("Enter your username: \n")
 
-    username = input("Enter your username: \n")
-
-    if username.isalpha() is False:
-        print("Please enter a user name which only consists of letters.")
-        print("Spaces and special characters are not allowed...\n")
-    else:
-        print(f"Welcome " + f"{username}\n".capitalize())
+        if username.isalpha() is False:
+            print("Please enter a user name which only consists of letters.")
+            print("Spaces and special characters are not allowed...\n")
+        else:
+            print("Welcome " + username.capitalize())
+            break
+    return False
 
 
 def choose_task():
