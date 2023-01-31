@@ -6,15 +6,30 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive",
 ]
-
-
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hr_space")
 
 
-def task():
+def welcome():
+    """
+    Request user to input their name, without spaces or special characters.
+    Change username to capitalize fir letter.
+    """
+    print("Please enter a user name which only consists of letters.")
+    print("Spaces and special characters are not allowed...\n")
+
+    username = input("Enter your username: \n")
+
+    if username.isalpha() is False:
+        print("Please enter a user name which only consists of letters.")
+        print("Spaces and special characters are not allowed...\n")
+    else:
+        print(f"Welcome " + f"{username}\n".capitalize())
+
+
+def choose_task():
     """
     Request user to choose from two different tasks, by entering 1 or 2.
     1 is to register a new employee. 2 is to record an employees sick absence.
@@ -33,4 +48,5 @@ def task():
             return False
 
 
-task()
+welcome()
+choose_task()
