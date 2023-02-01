@@ -64,16 +64,51 @@ def get_valid_fullname():
     print("Names must only consist of letters and spaces.")
     print("Special characters are not allowed...\n")
 
-    name = ""
+    nam = ""
     while True:
-        name = input("Please input new staff's full: ")
-        if not re.match(r"^[a-zA-Z\s]+$", name):
+        nam = input("Please input new staff's full: ")
+        if not re.match(r"^[a-zA-Z\s]+$", nam):
             print("Special charater are not allowed.")
             continue
-        return name.title()
+        return nam.title()
+
     return False
 
 
-welcome()
-choose_task()
-get_valid_fullname()
+def get_valid_number(num):
+    """
+    Validate user input as a UK phone number, using imported regex module.
+    While loop requesting input until input is valid.
+    The Regex string does have short falls of coverage, but appears to be the
+    most comprehensive when using Python as a stand alone program
+    """
+    pattern = re.compile(
+        "^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|'\
+        '((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|'\
+        '((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$"
+    )
+
+    return pattern.match(num)
+
+
+while True:
+    num = input("Please enter a valid UK phone number:  \n")
+    if get_valid_number(num):
+        print("Phone number is valid")
+        break
+    else:
+        print("Invalid Phone number")
+
+
+def main():
+    """
+    Run all program functions.
+    **Note to self**  Functions running in wrong order!
+    **Sort our and remove his reminder!
+    """
+    choose_task()
+    get_valid_fullname()
+    get_valid_number(num)
+
+
+main()
