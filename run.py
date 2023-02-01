@@ -1,3 +1,4 @@
+import re
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -14,16 +15,18 @@ SHEET = GSPREAD_CLIENT.open("hr_space")
 
 def welcome():
     """
-    Request user to input their name, without spaces or special characters.
-    Change username, firt letter to capital. With loop, until input is valid.
+    Request input: username spaces or special characters.
+    Change username, first letter to capital. With loop, until input is valid.
     """
-    print("Please enter a user name which only consists of letters.")
-    print("Spaces and special characters are not allowed...\n")
+    print(
+        "Please enter a valid user name which only consists of letters. "
+        "Spaces and special characters are not allowed...\n"
+    )
     while True:
         username = input("Enter your username: \n")
 
         if username.isalpha() is False:
-            print("Please enter a user name which only consists of letters.")
+            print("Please input a user name which only consists of letters.")
             print("Spaces and special characters are not allowed...\n")
         else:
             print("Welcome " + username.capitalize())
@@ -38,17 +41,39 @@ def choose_task():
     The loop will repeatedly ask the user to select 1 or 2.
     """
     while True:
-        print("To record new staff details, please select '1' and press 'ENTER'")
-        print("For staff attendance records, please select '2' and press 'ENTER' \n")
+        print("New staff records, select '1', then 'ENTER'")
+        print("For staff attendance records, select '2', then 'ENTER' \n")
 
         choice = int(input("Please make your selection: \n"))
         if choice == 1:
-            print("Place holder to run: new_staff function")
+            get_valid_fullname()
             break
         elif choice == 2:
             print("Place holder to run: attendance_records function")
             return False
 
 
+def get_valid_fullname():
+    """
+    Request user input, new staff's full name. No special characters.
+    Return with Capital letter start to each word.
+    RegEx code for this function borrowed from this site:
+    https://bobbyhadz.com/blog/python-input-only-letters-allowed
+    """
+    print("Input new staff's full name, seperated by spaces.")
+    print("Names must only consist of letters and spaces.")
+    print("Special characters are not allowed...\n")
+
+    name = ""
+    while True:
+        name = input("Please input new staff's full: ")
+        if not re.match(r"^[a-zA-Z\s]+$", name):
+            print("Special charater are not allowed.")
+            continue
+        return name.title()
+    return False
+
+
 welcome()
 choose_task()
+get_valid_fullname()
