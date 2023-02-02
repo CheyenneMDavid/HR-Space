@@ -67,7 +67,7 @@ def get_valid_fullname():
 
     nam = ""
     while True:
-        nam = input("Please input new staff's fullname: ")
+        nam = input("Please input new staff's fullname: \n")
         if not re.match(r"^[a-zA-Z\s]+$", nam):
             print("Special charater are not allowed.")
             continue
