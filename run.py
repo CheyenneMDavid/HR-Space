@@ -1,3 +1,4 @@
+import datetime
 import re
 import gspread
 from google.oauth2.service_account import Credentials
@@ -13,7 +14,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hr_space")
 
 
-def welcome():
+def hr_terminal():
     """
     Request input: username spaces or special characters.
     Change username, first letter to capital. With loop, until input is valid.
@@ -37,12 +38,12 @@ def welcome():
 def choose_task():
     """
     Request user to choose from two different tasks, by entering 1 or 2.
-    1 is to register a new employee. 2 is to record an employees sick absence.
+    1 is to register a new employee. 2 is to book staff holiday.
     The loop will repeatedly ask the user to select 1 or 2.
     """
     while True:
         print("New staff records, select '1', then 'ENTER'")
-        print("For staff attendance records, select '2', then 'ENTER' \n")
+        print("For staff holidays, select '2', then 'ENTER' \n")
 
         choice = int(input("Please make your selection: \n"))
         if choice == 1:
@@ -66,7 +67,7 @@ def get_valid_fullname():
 
     nam = ""
     while True:
-        nam = input("Please input new staff's full: ")
+        nam = input("Please input new staff's fullname: ")
         if not re.match(r"^[a-zA-Z\s]+$", nam):
             print("Special charater are not allowed.")
             continue
@@ -100,12 +101,19 @@ while True:
         print("Invalid Phone number")
 
 
+def line_compiler():
+    """
+    Gathers returns from functions to information for staff list
+    """
+
+
 def main():
     """
     Run all program functions.
     **Note to self**  Functions running in wrong order!
     **Sort our and remove his reminder!
     """
+    hr_terminal()
     choose_task()
     get_valid_fullname()
     get_valid_number(num)

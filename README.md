@@ -1,31 +1,26 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Welcome to HR Space
 
-Welcome CheyenneMDavid,
+HR Space is an application for the resources department of a company.
+The application maintaines a list of current employees, manages requests for
+leave and booked leave.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The workplace is a factory, which runs 7 days a week, 12 hour days and no
+nights.  The work is continuous, not seasonal and there is now ebb and flow of
+work.
 
-## Reminders
+## Purpose & Functioning
+Other than functioning as a recored of employed staffhere are agreed minimum
+staffing levels in the various roles within the factory.
+The criteria for leave being granted is that:
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+*  Minimum staffing levels are always met.
+*  The member of staff has leave to use.
+*  The leave is reasonably requested 2 weeks in advance.
 
-## Creating the Heroku app
+There is no preferential treatment. Holiday is given on a first come, first served basis, whilst the amount of people allowed off at any one time, is in line with the minimum staffing levels and the person's job role requirements.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The application's default setting for leave requests, is that any
+applications made, either too early or made too late will be rejected.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+However, this can be overridden for special circumstances if required.
